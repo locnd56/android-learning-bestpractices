@@ -1,9 +1,10 @@
 package test;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import com.example.exampleanalytics.R;
 /**
  * Created by Mr.Incredible on 2/16/2016.
  */
-public class TestActivity extends Activity {
+public class TestActivity extends AppCompatActivity {
     TextView tv_testactivity;
 
     @Override
@@ -22,6 +23,7 @@ public class TestActivity extends Activity {
         setContentView(R.layout.test_activity);
         initView();
         initListener();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initListener() {
@@ -44,6 +46,8 @@ public class TestActivity extends Activity {
     }
 
     private void initView() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.mtoolbar);
+        setSupportActionBar(toolbar);
         tv_testactivity = (TextView) findViewById(R.id.tv_testactivity);
     }
 
