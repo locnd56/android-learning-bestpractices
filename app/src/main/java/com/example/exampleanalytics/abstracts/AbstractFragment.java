@@ -19,7 +19,7 @@ public class AbstractFragment extends DialogFragment {
         return null;
     }
 
-    public void setTitle(Context context, String title) {
-        mainActivity.getSupportActionBar().setTitle(title);
+    public String getTitle(Context context) {
+        return "";
     }
 }

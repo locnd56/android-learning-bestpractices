@@ -1,6 +1,7 @@
 package com.example.exampleanalytics;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.exampleanalytics.abstracts.AbstractFragment;
 import com.example.exampleanalytics.fragment.FragmentDrawerSlideMenu;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private FragmentDrawerSlideMenu slideMenu;
     FrameLayout fl_container;
     AbstractFragment abs_fragment;
+    private boolean doubleBackToExitPressedOnce = false;
+    private final static int TIME_WAITING_EXIT = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +50,15 @@ public class MainActivity extends AppCompatActivity {
         switch (position) {
             case 0:
                 abs_fragment = new HomeFragment();
-//                abs_fragment.setTitle(this,getString(R.string.title_home));
+                getSupportActionBar().setTitle(abs_fragment.getTitle(this));
                 break;
             case 1:
                 abs_fragment = new FriendsFragment();
-//                abs_fragment.setTitle(getString(R.string.title_friends));
+                getSupportActionBar().setTitle(abs_fragment.getTitle(this));
                 break;
             case 2:
                 abs_fragment = new MessagesFragment();
-//                abs_fragment.setTitle(getString(R.string.title_messages));
+                getSupportActionBar().setTitle(abs_fragment.getTitle(this));
                 break;
             default:
                 break;
@@ -108,5 +112,27 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        doubleBacktoExit();
+    }
+
+    private void doubleBacktoExit() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, TIME_WAITING_EXIT);
     }
 }

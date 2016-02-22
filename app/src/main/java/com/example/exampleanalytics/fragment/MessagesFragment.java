@@ -1,5 +1,6 @@
 package com.example.exampleanalytics.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -31,5 +32,10 @@ public class MessagesFragment extends AbstractFragment {
 
     private void initView(View view) {
         tv_content = (TextView) view.findViewById(R.id.tv_fragmentmessages_content);
+    }
+
+    @Override
+    public String getTitle(Context context) {
+        return context.getString(R.string.title_messages);
     }
 }
