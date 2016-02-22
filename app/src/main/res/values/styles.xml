@@ -40,7 +40,7 @@
 
     <style name="EditTextStyle">
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="ImageButtonStyle">
