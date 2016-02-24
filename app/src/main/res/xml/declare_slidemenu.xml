@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<listmenu>
+    <menu
+        name="Home"
+        class="com.example.exampleanalytics.fragment.HomeFragment"
+        icon=""></menu>
+    <menu
+        name="Friends"
+        class="com.example.exampleanalytics.fragment.FriendsFragment"
+        icon=""></menu>
+    <menu
+        name="Messages"
+        class="com.example.exampleanalytics.fragment.MessagesFragment"
+        icon=""></menu>
+
+</listmenu>

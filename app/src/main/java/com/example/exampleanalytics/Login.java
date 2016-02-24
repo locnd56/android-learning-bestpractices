@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.exampleanalytics.customview.EditText_InputEmail;
-import com.example.exampleanalytics.customview.EditText_InputName;
-import com.example.exampleanalytics.customview.EditText_InputPassword;
+import com.example.exampleanalytics.customview.login.EditText_InputEmail;
+import com.example.exampleanalytics.customview.login.EditText_InputName;
+import com.example.exampleanalytics.customview.login.EditText_InputPassword;
 import com.example.exampleanalytics.utils.Utils;
 
 /**

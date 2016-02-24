@@ -13,16 +13,16 @@ import com.example.exampleanalytics.R;
 /**
  * Created by Mr.Incredible on 2/20/2016.
  */
-public class NavDrawerItemView extends LinearLayout {
+public class SlideMenuItemView extends LinearLayout {
     TextView tv_title;
     ImageView iv_icon;
 
-    public NavDrawerItemView(Context context) {
+    public SlideMenuItemView(Context context) {
         super(context);
         initalizes(context);
     }
 
-    public NavDrawerItemView(Context context, AttributeSet attrs) {
+    public SlideMenuItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initalizes(context);
     }
@@ -48,7 +48,7 @@ public class NavDrawerItemView extends LinearLayout {
 
     }
 
-    public void setData(NavDrawerItem item) {
+    public void setData(SlideMenuItem item) {
         if (item != null) {
             tv_title.setText(item.getTitle());
         }

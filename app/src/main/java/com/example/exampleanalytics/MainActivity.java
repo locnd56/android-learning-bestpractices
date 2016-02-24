@@ -20,17 +20,17 @@ import android.widget.Toast;
 
 import com.example.exampleanalytics.abstracts.AbstractFragment;
 import com.example.exampleanalytics.fragment.FragmentDrawerSlideMenu;
-import com.example.exampleanalytics.fragment.FriendsFragment;
-import com.example.exampleanalytics.fragment.HomeFragment;
-import com.example.exampleanalytics.fragment.MessagesFragment;
 import com.example.exampleanalytics.utils.Utils;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     private FragmentDrawerSlideMenu slideMenu;
     FrameLayout fl_container;
-    AbstractFragment abs_fragment;
+    AbstractFragment currentFrag;
     private boolean doubleBackToExitPressedOnce = false;
     private final static int TIME_WAITING_EXIT = 2000;
     private MenuItem mSearchAction;
@@ -50,38 +50,47 @@ public class MainActivity extends AppCompatActivity {
     private void initListener() {
         slideMenu.setDrawerListener(new FragmentDrawerSlideMenu.FragmentDrawerListener() {
             @Override
-            public void onDrawerItemSelected(View view, int position) {
-                displayFragmentSlideMenu(position);
+            public void onDrawerItemSelected(View view, int position, String clazz) {
+                displayFragment(clazz);
             }
         });
     }
 
-    private void displayFragmentSlideMenu(int position) {
-        switch (position) {
-            case 0:
-                abs_fragment = new HomeFragment();
-                getSupportActionBar().setTitle(abs_fragment.getTitle(this));
-                break;
-            case 1:
-                abs_fragment = new FriendsFragment();
-                getSupportActionBar().setTitle(abs_fragment.getTitle(this));
-                break;
-            case 2:
-                abs_fragment = new MessagesFragment();
-                getSupportActionBar().setTitle(abs_fragment.getTitle(this));
-                break;
-            default:
-                break;
-        }
-        displayFragment(abs_fragment);
+    private AbstractFragment initFragment(String className) {
+        Class<?> clazz = null;
+        if (className != null) {
+            try {
+                clazz = Class.forName(className);
+                Constructor<?> ctor = clazz.getConstructor();
+                Object object = ctor.newInstance();
+                if (object instanceof AbstractFragment) {
+                    AbstractFragment fragment = (AbstractFragment) object;
+                    return fragment;
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
 
+        }
+        return null;
     }
 
-    private void displayFragment(AbstractFragment abs_fragment) {
-        if (abs_fragment != null) {
+    private void displayFragment(String className) {
+        AbstractFragment frag = initFragment(className);
+        currentFrag = frag;
+        getSupportActionBar().setTitle(frag.getTitle(this));
+        if (frag != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fl_container, abs_fragment);
+            fragmentTransaction.replace(R.id.fl_container, frag);
             fragmentTransaction.commit();
 
         }

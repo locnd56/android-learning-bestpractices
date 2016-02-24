@@ -16,10 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.exampleanalytics.R;
-import com.example.exampleanalytics.nav_slidemenu.NavDrawerAdapter;
-import com.example.exampleanalytics.nav_slidemenu.NavDrawerItem;
+import com.example.exampleanalytics.nav_slidemenu.SlideMenuAdapter;
+import com.example.exampleanalytics.nav_slidemenu.SlideMenuItem;
+import com.example.exampleanalytics.parser.XMLParser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,9 +29,9 @@ public class FragmentDrawerSlideMenu extends Fragment {
 
     private RecyclerView recyclerView;
     private String[] titles = null;
-    private NavDrawerAdapter adapter;
+    private SlideMenuAdapter adapter;
     private android.support.v4.widget.DrawerLayout mDrawerLayout;
-    private List<NavDrawerItem> listItems;
+    private List<SlideMenuItem> listItems;
     private FragmentDrawerListener drawerListener;
     private View containerView;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -40,7 +40,7 @@ public class FragmentDrawerSlideMenu extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        titles = getActivity().getResources().getStringArray(R.array.nav_drawer_label);
+
     }
 
     @Nullable
@@ -58,13 +58,8 @@ public class FragmentDrawerSlideMenu extends Fragment {
     }
 
     private void initData() {
-        listItems = new ArrayList<>();
-        for (int i = 0; i < titles.length; i++) {
-            NavDrawerItem item = new NavDrawerItem();
-            item.setTitle(titles[i]);
-            listItems.add(item);
-        }
-        adapter = new NavDrawerAdapter(getContext(), listItems);
+        listItems = XMLParser.parseXML(getResources().getXml(R.xml.declare_slidemenu));
+        adapter = new SlideMenuAdapter(getContext(), listItems);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -73,7 +68,7 @@ public class FragmentDrawerSlideMenu extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                drawerListener.onDrawerItemSelected(view, position);
+                drawerListener.onDrawerItemSelected(view, position, listItems.get(position).getClassName_str());
                 mDrawerLayout.closeDrawer(containerView);
             }
 
@@ -167,7 +162,7 @@ public class FragmentDrawerSlideMenu extends Fragment {
     }
 
     public interface FragmentDrawerListener {
-        public void onDrawerItemSelected(View view, int position);
+        public void onDrawerItemSelected(View view, int position, String clazz);
     }
 
     public void setDrawerListener(FragmentDrawerListener drawerListener) {

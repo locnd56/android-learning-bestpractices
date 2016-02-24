@@ -9,20 +9,20 @@
         android:id="@+id/toolbar_login"
         layout="@layout/login_toolbar" />
 
-    <com.example.exampleanalytics.customview.EditText_InputName
+    <com.example.exampleanalytics.customview.login.EditText_InputName
         android:id="@+id/edt_login_inputname"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.example.exampleanalytics.customview.EditText_InputName>
+        android:layout_height="wrap_content"></com.example.exampleanalytics.customview.login.EditText_InputName>
 
-    <com.example.exampleanalytics.customview.EditText_InputPassword
+    <com.example.exampleanalytics.customview.login.EditText_InputPassword
         android:id="@+id/edt_login_inputpassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.example.exampleanalytics.customview.EditText_InputPassword>
+        android:layout_height="wrap_content"></com.example.exampleanalytics.customview.login.EditText_InputPassword>
 
-    <com.example.exampleanalytics.customview.EditText_InputEmail
+    <com.example.exampleanalytics.customview.login.EditText_InputEmail
         android:id="@+id/edt_login_inputemail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.example.exampleanalytics.customview.EditText_InputEmail>
+        android:layout_height="wrap_content"></com.example.exampleanalytics.customview.login.EditText_InputEmail>
 
     <Button
         android:id="@+id/btn_login"

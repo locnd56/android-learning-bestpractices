@@ -1,4 +1,4 @@
-package com.example.exampleanalytics.customview;
+package com.example.exampleanalytics.customview.login;
 
 import android.app.Service;
 import android.content.Context;
