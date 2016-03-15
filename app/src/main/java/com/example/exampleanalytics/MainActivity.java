@@ -2,8 +2,10 @@ package com.example.exampleanalytics;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,16 +21,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.exampleanalytics.abstracts.AbstractFragment;
-import com.example.exampleanalytics.fragment.FragmentDrawerSlideMenu;
+import com.example.exampleanalytics.adapter.ViewPagerAdapter;
+import com.example.exampleanalytics.fragment.friends.FriendsFragment;
+import com.example.exampleanalytics.fragment.homefragment.HomeFragment;
+import com.example.exampleanalytics.fragment.messagesfragment.MessagesFragment;
+import com.example.exampleanalytics.fragment.nav_slidemenu.SlideMenuFragment;
+import com.example.exampleanalytics.fragment.nav_slidemenu.SlideMenuItem;
+import com.example.exampleanalytics.model.TabItem;
+import com.example.exampleanalytics.parser.XMLParser;
 import com.example.exampleanalytics.utils.Utils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int COUNT = 3;
+
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    private FragmentDrawerSlideMenu slideMenu;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    private SlideMenuFragment slideMenu;
     FrameLayout fl_container;
     AbstractFragment currentFrag;
     private boolean doubleBackToExitPressedOnce = false;
@@ -36,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
+    List<TabItem> tabItemList;
+    List<SlideMenuItem> slideMenuItemList;
+    String declareTabViewPager = "#" + "Home" + "#" + "Friends" + "#" + "Messages";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +61,62 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Utils.hideKeyBoardWhenClickOutSide(this, findViewById(R.id.ll_activitymain));
         initView();
+        initData();
         initListener();
 
     }
 
+    private void initData() {
+        currentFrag = initFragment(HomeFragment.class.getName());
+        if (tabItemList == null) {
+            tabItemList = new ArrayList<>();
+        }
+        setUpViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+        setUpTabIcons();
+    }
+
+    private void setUpTabIcons() {
+        for (int i = 0; i < COUNT; i++) {
+            String iconPath = slideMenuItemList.get(i).getIcon();
+            if (iconPath != null && iconPath.length() > 0) {
+                int icon = getResources().getIdentifier(iconPath, "mipmap", this.getPackageName());
+                tabLayout.getTabAt(i).setIcon(icon);
+            }
+        }
+    }
+
+    private void setUpViewPager(ViewPager viewPager) {
+        slideMenuItemList = new ArrayList<>();
+        slideMenuItemList = XMLParser.parseXML(getResources().getXml(R.xml.declare_slidemenu));
+        for (int i = 0; i < COUNT; i++) {
+            SlideMenuItem slideMenuItem = slideMenuItemList.get(i);
+            TabItem item = new TabItem(initFragment(slideMenuItem.getClassName_str()), slideMenuItem.getIcon());
+            tabItemList.add(item);
+        }
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), tabItemList);
+        viewPager.setAdapter(adapter);
+    }
+
     private void initListener() {
-        slideMenu.setDrawerListener(new FragmentDrawerSlideMenu.FragmentDrawerListener() {
+        slideMenu.setDrawerListener(new SlideMenuFragment.FragmentDrawerListener() {
             @Override
             public void onDrawerItemSelected(View view, int position, String clazz) {
                 displayFragment(clazz);
+            }
+        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+//                displayFragment(tabItemList.get(position).getFragment().getClass().getName());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
             }
         });
     }
@@ -86,13 +151,25 @@ public class MainActivity extends AppCompatActivity {
     private void displayFragment(String className) {
         AbstractFragment frag = initFragment(className);
         currentFrag = frag;
-        getSupportActionBar().setTitle(frag.getTitle(this));
-        if (frag != null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fl_container, frag);
-            fragmentTransaction.commit();
+        if (className.equals(HomeFragment.class.getName())) {
+            viewPager.setVisibility(View.VISIBLE);
+            viewPager.setCurrentItem(0);
+        } else if (className.equals(FriendsFragment.class.getName())) {
+            viewPager.setVisibility(View.VISIBLE);
+            viewPager.setCurrentItem(1);
+        } else if (className.equals(MessagesFragment.class.getName())) {
+            viewPager.setVisibility(View.VISIBLE);
+            viewPager.setCurrentItem(2);
+        } else {
+            viewPager.setVisibility(View.GONE);
+            getSupportActionBar().setTitle(frag.getTitle(this));
+            if (frag != null) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fl_container, frag);
+                fragmentTransaction.commit();
 
+            }
         }
     }
 
@@ -101,7 +178,12 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        slideMenu = (FragmentDrawerSlideMenu) getSupportFragmentManager().findFragmentById(R.id.slidemenu);
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+
+        slideMenu = (SlideMenuFragment) getSupportFragmentManager().findFragmentById(R.id.slidemenu);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         slideMenu.setUp(R.id.slidemenu, drawerLayout, toolbar);
 

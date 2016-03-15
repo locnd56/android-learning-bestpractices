@@ -1,4 +1,4 @@
-package com.example.exampleanalytics.fragment;
+package com.example.exampleanalytics.fragment.homefragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,27 +14,40 @@ import com.example.exampleanalytics.abstracts.AbstractFragment;
 /**
  * Created by Mr.Incredible on 2/22/2016.
  */
-public class FriendsFragment extends AbstractFragment {
+public class HomeFragment extends AbstractFragment {
     TextView tv_content;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        showToast(getMainActivity(), "Home created");
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_friends, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         initView(view);
         initData();
         return view;
     }
 
     private void initData() {
-        tv_content.setText(getString(R.string.title_friends));
+        tv_content.setText(getString(R.string.title_home));
     }
 
     private void initView(View view) {
-        tv_content = (TextView) view.findViewById(R.id.tv_fragmentfriends_content);
+        tv_content = (TextView) view.findViewById(R.id.tv_fragmenthome_content);
     }
+
     @Override
     public String getTitle(Context context) {
-        return context.getString(R.string.title_friends);
+        return context.getString(R.string.title_home);
     }
 }

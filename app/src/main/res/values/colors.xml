@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="primaryText">#87000000</color>
+    <color name="secondaryText">#54000000</color>
+    <color name="hintText">#38000000</color>
+    <color name="dividers">#12000000</color>
+
+    <!-- Common-->
+    <color name="text_color">@color/primaryText</color>
+    <color name="text_color_secondary">@color/secondaryText</color>
+    <color name="hint_text">@color/hintText</color>
+    <color name="dividers_line">@color/dividers</color>
+
 </resources>

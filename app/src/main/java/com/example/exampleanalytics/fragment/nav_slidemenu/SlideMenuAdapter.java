@@ -1,4 +1,4 @@
-package com.example.exampleanalytics.nav_slidemenu;
+package com.example.exampleanalytics.fragment.nav_slidemenu;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

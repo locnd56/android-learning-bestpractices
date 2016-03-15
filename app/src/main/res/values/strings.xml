@@ -7,7 +7,8 @@
 
     <string name="nav_item_home">Home</string>
     <string name="nav_item_friends">Friends</string>
-    <string name="nav_item_notifications">Messages</string>
+    <string name="nav_item_notifications">Notifications</string>
+    <string name="nav_item_learning">Learning</string>
 
     <!--navigation drawer item labels -->
     <string-array name="nav_drawer_label">
@@ -15,7 +16,7 @@
         <item>@string/nav_item_friends</item>
         <item>@string/nav_item_notifications</item>
     </string-array>
-
+    <string name="title_learning">Learning</string>
     <string name="title_messages">Messages</string>
     <string name="title_friends">Friends</string>
     <string name="title_home">Home</string>

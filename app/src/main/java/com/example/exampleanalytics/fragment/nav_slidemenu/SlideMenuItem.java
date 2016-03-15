@@ -1,4 +1,4 @@
-package com.example.exampleanalytics.nav_slidemenu;
+package com.example.exampleanalytics.fragment.nav_slidemenu;
 
 /**
  * Created by Mr.Incredible on 2/20/2016.

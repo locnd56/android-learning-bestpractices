@@ -1,4 +1,4 @@
-package com.example.exampleanalytics.fragment;
+package com.example.exampleanalytics.fragment.friends;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,28 +14,40 @@ import com.example.exampleanalytics.abstracts.AbstractFragment;
 /**
  * Created by Mr.Incredible on 2/22/2016.
  */
-public class MessagesFragment extends AbstractFragment {
+public class FriendsFragment extends AbstractFragment {
     TextView tv_content;
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        showToast(getMainActivity(),"FriendsFragment created");
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_messages, container, false);
+        View view = inflater.inflate(R.layout.fragment_friends, container, false);
         initView(view);
         initData();
         return view;
     }
 
     private void initData() {
-        tv_content.setText(getString(R.string.title_messages));
+        tv_content.setText(getString(R.string.title_friends));
     }
 
     private void initView(View view) {
-        tv_content = (TextView) view.findViewById(R.id.tv_fragmentmessages_content);
+        tv_content = (TextView) view.findViewById(R.id.tv_fragmentfriends_content);
     }
 
     @Override
     public String getTitle(Context context) {
-        return context.getString(R.string.title_messages);
+        return context.getString(R.string.title_friends);
     }
 }

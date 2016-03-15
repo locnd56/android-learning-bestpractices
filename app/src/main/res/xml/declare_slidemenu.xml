@@ -2,15 +2,18 @@
 <listmenu>
     <menu
         name="Home"
-        class="com.example.exampleanalytics.fragment.HomeFragment"
-        icon=""></menu>
+        class="com.example.exampleanalytics.fragment.homefragment.HomeFragment"
+        icon="ic_slidemenu_home"></menu>
     <menu
         name="Friends"
-        class="com.example.exampleanalytics.fragment.FriendsFragment"
-        icon=""></menu>
+        class="com.example.exampleanalytics.fragment.friends.FriendsFragment"
+        icon="ic_slidemenu_friends"></menu>
     <menu
         name="Messages"
-        class="com.example.exampleanalytics.fragment.MessagesFragment"
-        icon=""></menu>
-
+        class="com.example.exampleanalytics.fragment.messagesfragment.MessagesFragment"
+        icon="ic_slidemenu_messages"></menu>
+    <menu
+        name="Learning"
+        class="com.example.exampleanalytics.fragment.learningfragment.LearningFragment"
+        icon="ic_slidemenu_learning"></menu>
 </listmenu>

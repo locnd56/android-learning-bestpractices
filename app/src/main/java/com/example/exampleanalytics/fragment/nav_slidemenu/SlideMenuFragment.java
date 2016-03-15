@@ -1,4 +1,4 @@
-package com.example.exampleanalytics.fragment;
+package com.example.exampleanalytics.fragment.nav_slidemenu;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,8 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.exampleanalytics.R;
-import com.example.exampleanalytics.nav_slidemenu.SlideMenuAdapter;
-import com.example.exampleanalytics.nav_slidemenu.SlideMenuItem;
 import com.example.exampleanalytics.parser.XMLParser;
 
 import java.util.List;
@@ -25,7 +23,7 @@ import java.util.List;
 /**
  * Created by Mr.Incredible on 2/22/2016.
  */
-public class FragmentDrawerSlideMenu extends Fragment {
+public class SlideMenuFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private String[] titles = null;
