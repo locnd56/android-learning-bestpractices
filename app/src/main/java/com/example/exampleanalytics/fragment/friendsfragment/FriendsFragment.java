@@ -1,4 +1,4 @@
-package com.example.exampleanalytics.fragment.friends;
+package com.example.exampleanalytics.fragment.friendsfragment;
 
 import android.content.Context;
 import android.os.Bundle;
