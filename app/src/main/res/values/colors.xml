@@ -15,4 +15,9 @@
     <color name="hint_text">@color/hintText</color>
     <color name="dividers_line">@color/dividers</color>
 
+    <!-- alertdialog -->
+    <color name="alertdialog_background_color">#302F37</color>
+    <color name="alertdialog_message_color">#99ffffff</color>
+    <color name="header_separation_color">#C1C1C1</color>
+
 </resources>

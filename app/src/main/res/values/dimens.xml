@@ -22,4 +22,11 @@
     <dimen name="imageview_size_huge">30dp</dimen>
     <dimen name="imageview_size_gigantic">40dp</dimen>
 
+    <!-- dialog showlog -->
+    <dimen name="alertdialog_width">300dp</dimen>
+    <dimen name="alertdialog_title_height">40dp</dimen>
+    <dimen name="alertdialog_content_height">80dp</dimen>
+    <dimen name="dialog_width">250dp</dimen>
+    <dimen name="text_size_dialog">14sp</dimen>
+
 </resources>

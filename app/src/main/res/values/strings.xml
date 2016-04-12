@@ -31,4 +31,11 @@
     <string name="err_msg_email">Enter valid email address</string>
     <string name="err_msg_password">Enter the password</string>
 
+    <!--Alert Dialog-->
+    <string name="XacNhan">Xác nhận</string>
+    <string name="HuyBo">Hủy Bỏ</string>
+
+    <string name="Co">Có</string>
+    <string name="Khong">Không</string>
+
 </resources>

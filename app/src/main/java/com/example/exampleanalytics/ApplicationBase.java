@@ -11,9 +11,9 @@ import io.fabric.sdk.android.Fabric;
 /**
  * Created by Mr.Incredible on 2/16/2016.
  */
-public class CustomApplication extends Application {
+public class ApplicationBase extends Application {
     private AnalyticsTrackers analyticsTrackers;
-    private static CustomApplication mInstance;
+    private static ApplicationBase mInstance;
 
     @Override
     public void onCreate() {
@@ -25,7 +25,7 @@ public class CustomApplication extends Application {
 
     }
 
-    public static synchronized CustomApplication getInstance() {
+    public static synchronized ApplicationBase getInstance() {
         return mInstance;
     }
 

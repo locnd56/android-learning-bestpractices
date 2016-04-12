@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_nointernetconnection">Không kết nối được đến server. Vui lòng thử lại</string>
+    <string name="msg_unknownerror">Thao tác không thành công</string>
+    <string name="msg_jsonformaterror">Xử lý dữ liệu không thành công</string>
+</resources>
