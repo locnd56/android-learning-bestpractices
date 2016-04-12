@@ -8,3 +8,6 @@
 /.idea/misc.xml
 /*.iml
 /.gitignore
+*.iml
+*.properties
+*.pro
