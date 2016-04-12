@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.example.exampleanalytics.abstracts.AbstractFragment;
 import com.example.exampleanalytics.adapter.ViewPagerAdapter;
-import com.example.exampleanalytics.fragment.friends.FriendsFragment;
+import com.example.exampleanalytics.fragment.friendsfragment.FriendsFragment;
 import com.example.exampleanalytics.fragment.homefragment.HomeFragment;
 import com.example.exampleanalytics.fragment.messagesfragment.MessagesFragment;
 import com.example.exampleanalytics.fragment.nav_slidemenu.SlideMenuFragment;
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 displayFragment(clazz);
             }
         });
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }

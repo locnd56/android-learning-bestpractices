@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/tv_fragmentmessages_content"
-        style="@style/TextViewStyle"
+        style="@style/TextView_Style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>

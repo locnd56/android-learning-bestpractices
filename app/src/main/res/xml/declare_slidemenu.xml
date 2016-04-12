@@ -6,7 +6,7 @@
         icon="ic_slidemenu_home"></menu>
     <menu
         name="Friends"
-        class="com.example.exampleanalytics.fragment.friends.FriendsFragment"
+        class="com.example.exampleanalytics.fragment.friendsfragment.FriendsFragment"
         icon="ic_slidemenu_friends"></menu>
     <menu
         name="Messages"

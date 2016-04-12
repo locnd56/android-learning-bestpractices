@@ -3,4 +3,23 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+
+    <!-- Common -->
+    <!-- TextSize -->
+    <dimen name="text_size">13sp</dimen>
+    <dimen name="text_size_tiny">11sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_large">14sp</dimen>
+    <dimen name="text_size_huge">15sp</dimen>
+    <dimen name="text_size_gigantic">16sp</dimen>
+
+    <!-- ImageSize -->
+    <dimen name="imageview_size">20dp</dimen>
+    <dimen name="imageview_size_tiny">10dp</dimen>
+    <dimen name="imageview_size_small">15dp</dimen>
+    <dimen name="imageview_size_large">25dp</dimen>
+    <dimen name="imageview_size_huge">30dp</dimen>
+    <dimen name="imageview_size_gigantic">40dp</dimen>
+
 </resources>

@@ -6,7 +6,7 @@
 
     <EditText
         android:id="@+id/edt_searchbar"
-        style="@style/EditTextStyle"
+        style="@style/EditText_Style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:imeOptions="actionSearch"
