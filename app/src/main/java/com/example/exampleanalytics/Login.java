@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
-            CustomApplication.getInstance().trackException(e);
+            ApplicationBase.getInstance().trackException(e);
         }
     }
 

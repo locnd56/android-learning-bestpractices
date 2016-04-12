@@ -7,16 +7,21 @@ import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import com.example.exampleanalytics.MainActivity;
+import com.example.exampleanalytics.customview.alertdialog.AlertDialog;
 
 /**
  * Created by Mr.Incredible on 2/22/2016.
  */
 public class AbstractFragment extends Fragment {
     MainActivity mainActivity;
+    AlertDialog alertDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (alertDialog == null) {
+            alertDialog = new AlertDialog(getContext());
+        }
     }
 
     public MainActivity getMainActivity() {
@@ -27,12 +32,17 @@ public class AbstractFragment extends Fragment {
         return null;
     }
 
-    public void showToast(Context context,String content) {
+    public void showToast(Context context, String content) {
         Toast.makeText(context, content, Toast.LENGTH_LONG).show();
     }
 
     public String getTitle(Context context) {
         return "";
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override

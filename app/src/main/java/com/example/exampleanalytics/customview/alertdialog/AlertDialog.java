@@ -3,13 +3,13 @@ package com.example.exampleanalytics.customview.alertdialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.g.customwidget.R;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.SimpleAction;
+import com.example.exampleanalytics.R;
+import com.example.exampleanalytics.requesttoserver.SimpleAction;
 
 public class AlertDialog extends Dialog {
     Context context;
@@ -68,6 +68,9 @@ public class AlertDialog extends Dialog {
         setOnDismissListener(onDismissListener);
     }
 
+    public void showMessage(String msg) {
+        showDialog("", msg, null);
+    }
 
     public void showMessage(String title, String msg) {
         showDialog(title, msg, null);

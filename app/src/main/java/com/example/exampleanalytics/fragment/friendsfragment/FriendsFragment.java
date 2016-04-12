@@ -16,17 +16,21 @@ import com.example.exampleanalytics.abstracts.AbstractFragment;
  */
 public class FriendsFragment extends AbstractFragment {
     TextView tv_content;
-
+    FriendsBusiness friendsBusiness;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState
+
+    ) {
         super.onCreate(savedInstanceState);
+        friendsBusiness = new FriendsBusiness(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        showToast(getMainActivity(),"FriendsFragment created");
+        showToast(getMainActivity(), "FriendsFragment created");
+        friendsBusiness.callGetData();
     }
 
     @Nullable
@@ -39,11 +43,15 @@ public class FriendsFragment extends AbstractFragment {
     }
 
     private void initData() {
-        tv_content.setText(getString(R.string.title_friends));
+//        tv_content.setText(getString(R.string.title_friends));
     }
 
     private void initView(View view) {
         tv_content = (TextView) view.findViewById(R.id.tv_fragmentfriends_content);
+    }
+
+    public void setContent(String content) {
+        tv_content.setText(content);
     }
 
     @Override

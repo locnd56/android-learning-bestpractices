@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        CustomApplication.getInstance().trackScreen(this.getClass().getName());
+        ApplicationBase.getInstance().trackScreen(this.getClass().getName());
     }
 
     @Override

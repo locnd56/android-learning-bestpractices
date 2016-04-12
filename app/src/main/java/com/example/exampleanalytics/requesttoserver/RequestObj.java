@@ -7,17 +7,17 @@ import java.util.HashMap;
  */
 public class RequestObj {
     private HashMap<String, Object> info;
-    String apiIdentify;
+    String keyAPIIdentify;
     String api;
     String parameter;
 
     public RequestObj(String api, String apiIdentify) {
         this.api = api;
-        this.apiIdentify = apiIdentify;
+        this.keyAPIIdentify = apiIdentify;
     }
 
-    public String getApiIdentify() {
-        return apiIdentify;
+    public String getKeyAPIIdentify() {
+        return keyAPIIdentify;
     }
 
     public Object getInfo(String key) {

@@ -42,7 +42,7 @@ import java.util.zip.GZIPInputStream;
 /**
  * Created by giang.ngo on 18-03-2016.
  */
-class ServiceConnection {
+public class ServiceConnection {
     private static final int THREAD_POOL = 20;
     private static final int TIMEOUT = 20000;
     public static DefaultHttpClient client;
@@ -134,12 +134,12 @@ class ServiceConnection {
         }
 
         HttpGetService httpGetService = new HttpGetService(responseHandler, request);
-        cancelOldRequest(request.getApiIdentify(), httpGetService);
+        cancelOldRequest(request.getKeyAPIIdentify(), httpGetService);
         try {
             httpGetService.executeOnExecutor(
                     AsyncTask.THREAD_POOL_EXECUTOR, "");
         } catch (IllegalStateException e) {
-            notifyErrorResponse(responseHandler, ResponseStatus.ConnectionError, request.getApiIdentify());
+            notifyErrorResponse(responseHandler, ResponseStatus.ConnectionError, request.getKeyAPIIdentify());
         }
     }
 
@@ -148,12 +148,12 @@ class ServiceConnection {
             return;
         }
         HttpPatchService httpPatchService = new HttpPatchService(responseHandler, request);
-        cancelOldRequest(request.getApiIdentify(), httpPatchService);
+        cancelOldRequest(request.getKeyAPIIdentify(), httpPatchService);
         try {
             httpPatchService.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
                     "");
         } catch (IllegalStateException e) {
-            notifyErrorResponse(responseHandler, ResponseStatus.ConnectionError, request.getApiIdentify());
+            notifyErrorResponse(responseHandler, ResponseStatus.ConnectionError, request.getKeyAPIIdentify());
         }
     }
 
@@ -162,12 +162,12 @@ class ServiceConnection {
             return;
         }
         HttpPostService httpPostService = new HttpPostService(responseHandler, request);
-        cancelOldRequest(request.getApiIdentify(), httpPostService);
+        cancelOldRequest(request.getKeyAPIIdentify(), httpPostService);
         try {
             httpPostService.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
                     "");
         } catch (IllegalStateException e) {
-            notifyErrorResponse(responseHandler, ResponseStatus.ConnectionError, request.getApiIdentify());
+            notifyErrorResponse(responseHandler, ResponseStatus.ConnectionError, request.getKeyAPIIdentify());
         }
     }
 
@@ -180,7 +180,7 @@ class ServiceConnection {
             httpDeleteService.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
                     "");
         } catch (IllegalStateException e) {
-            notifyErrorResponse(responseHandler, ResponseStatus.ConnectionError, request.getApiIdentify());
+            notifyErrorResponse(responseHandler, ResponseStatus.ConnectionError, request.getKeyAPIIdentify());
         }
     }
 
@@ -205,12 +205,12 @@ class ServiceConnection {
             String result = null;
             try {
                 HttpGet get = new HttpGet(request.getAPI());
-                Log.i(TAG_REQUEST, request.getApiIdentify() + ":> " + request.getAPI());
+                Log.i(TAG_REQUEST, request.getKeyAPIIdentify() + ":> " + request.getAPI());
                 HttpResponse response = ServiceConnection.client.execute(get);
                 if (response != null) {
                     result = inputStreamToString(
                             response.getEntity().getContent()).toString();
-                    Log.i(TAG_RESPONSE, request.getApiIdentify() + ":> " + result);
+                    Log.i(TAG_RESPONSE, request.getKeyAPIIdentify() + ":> " + result);
                 }
             } catch (SocketException e) {
             } catch (UnsupportedEncodingException e) {
@@ -222,7 +222,7 @@ class ServiceConnection {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            ResponseObj rObj = genResponseFromContent(request.getApiIdentify(), result);
+            ResponseObj rObj = genResponseFromContent(request.getKeyAPIIdentify(), result);
             return rObj;
         }
 
@@ -258,8 +258,8 @@ class ServiceConnection {
             try {
                 HttpPatch patch = new HttpPatch(request.getAPI());
 
-                Log.i(TAG_REQUEST, request.getApiIdentify() + ":> " + request.getAPI());
-                Log.i(TAG_REQUEST, request.getApiIdentify() + ":> " + request.getParameter());
+                Log.i(TAG_REQUEST, request.getKeyAPIIdentify() + ":> " + request.getAPI());
+                Log.i(TAG_REQUEST, request.getKeyAPIIdentify() + ":> " + request.getParameter());
 
                 StringEntity jsonPara = new StringEntity(request.getParameter(), "UTF-8");
                 patch.setEntity(jsonPara);
@@ -267,7 +267,7 @@ class ServiceConnection {
                 if (response != null) {
                     result = inputStreamToString(
                             response.getEntity().getContent()).toString();
-                    Log.i(TAG_RESPONSE, request.getApiIdentify() + ":> " + result);
+                    Log.i(TAG_RESPONSE, request.getKeyAPIIdentify() + ":> " + result);
                 }
             } catch (SocketException e) {
             } catch (UnsupportedEncodingException e) {
@@ -279,7 +279,7 @@ class ServiceConnection {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            ResponseObj rObj = genResponseFromContent(request.getApiIdentify(), result);
+            ResponseObj rObj = genResponseFromContent(request.getKeyAPIIdentify(), result);
             return rObj;
         }
 
@@ -315,8 +315,8 @@ class ServiceConnection {
             try {
                 HttpPost post = new HttpPost(request.getAPI());
 
-                Log.i(TAG_REQUEST, request.getApiIdentify() + ":> " + request.getAPI());
-                Log.i(TAG_REQUEST, request.getApiIdentify() + ":> " + request.getParameter());
+                Log.i(TAG_REQUEST, request.getKeyAPIIdentify() + ":> " + request.getAPI());
+                Log.i(TAG_REQUEST, request.getKeyAPIIdentify() + ":> " + request.getParameter());
 
                 StringEntity jsonPara = new StringEntity(request.getParameter(), "UTF-8");
                 post.setEntity(jsonPara);
@@ -324,7 +324,7 @@ class ServiceConnection {
                 if (response != null) {
                     result = inputStreamToString(
                             response.getEntity().getContent()).toString();
-                    Log.i(TAG_RESPONSE, request.getApiIdentify() + ":> " + result);
+                    Log.i(TAG_RESPONSE, request.getKeyAPIIdentify() + ":> " + result);
                 }
             } catch (SocketException e) {
             } catch (UnsupportedEncodingException e) {
@@ -337,7 +337,7 @@ class ServiceConnection {
                 e.printStackTrace();
             }
 
-            ResponseObj rObj = genResponseFromContent(request.getApiIdentify(), result);
+            ResponseObj rObj = genResponseFromContent(request.getKeyAPIIdentify(), result);
             return rObj;
         }
 
@@ -372,12 +372,12 @@ class ServiceConnection {
             String result = null;
             HttpDelete delete = new HttpDelete(request.getAPI());
             try {
-                Log.i(TAG_REQUEST, request.getApiIdentify() + ":> " + request.getAPI());
+                Log.i(TAG_REQUEST, request.getKeyAPIIdentify() + ":> " + request.getAPI());
                 HttpResponse response = ServiceConnection.client.execute(delete);
                 if (response != null) {
                     result = inputStreamToString(
                             response.getEntity().getContent()).toString();
-                    Log.i(TAG_RESPONSE, request.getApiIdentify() + ":> " + result);
+                    Log.i(TAG_RESPONSE, request.getKeyAPIIdentify() + ":> " + result);
                 }
             } catch (SocketException e) {
             } catch (UnsupportedEncodingException e) {
@@ -387,7 +387,7 @@ class ServiceConnection {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ResponseObj rObj = genResponseFromContent(request.getApiIdentify(), result);
+            ResponseObj rObj = genResponseFromContent(request.getKeyAPIIdentify(), result);
             return rObj;
         }
 

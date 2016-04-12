@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.exampleanalytics.CustomApplication;
+import com.example.exampleanalytics.ApplicationBase;
 import com.example.exampleanalytics.R;
 
 /**
@@ -37,11 +37,11 @@ public class TestActivity extends AppCompatActivity {
                             tv_testactivity.setTextColor(Color.parseColor("#FF0000"));
                         }
                     }).show();
-                    CustomApplication.getInstance().trackEvent(this.getClass().getName(), "Click", tv_testactivity.getText().toString());
+                    ApplicationBase.getInstance().trackEvent(this.getClass().getName(), "Click", tv_testactivity.getText().toString());
                 }
             });
         } catch (Exception e) {
-            CustomApplication.getInstance().trackException(e);
+            ApplicationBase.getInstance().trackException(e);
         }
     }
 
@@ -54,6 +54,6 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        CustomApplication.getInstance().trackScreen(this.getClass().getName());
+        ApplicationBase.getInstance().trackScreen(this.getClass().getName());
     }
 }
