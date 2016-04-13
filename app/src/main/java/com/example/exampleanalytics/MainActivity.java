@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         slideMenu.setDrawerListener(new SlideMenuFragment.FragmentDrawerListener() {
             @Override
             public void onDrawerItemSelected(View view, int position, String clazz) {
-                displayFragment(clazz);
+//                displayFragment(clazz);
             }
         });
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

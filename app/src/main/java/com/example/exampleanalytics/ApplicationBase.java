@@ -1,11 +1,15 @@
 package com.example.exampleanalytics;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.analytics.ExceptionParser;
+import com.google.android.gms.analytics.ExceptionReporter;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.StandardExceptionParser;
 import com.google.android.gms.analytics.Tracker;
+
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -22,6 +26,11 @@ public class ApplicationBase extends Application {
         mInstance = this;
         AnalyticsTrackers.initialize(this);
         AnalyticsTrackers.getInstance().get(AnalyticsTrackers.Target.APP);
+        Thread.UncaughtExceptionHandler myHandler = new AnalyticsExceptionReporter(
+                getGoogleAnalyticsTracker(),
+                Thread.getDefaultUncaughtExceptionHandler(),
+                this);
+        Thread.setDefaultUncaughtExceptionHandler(myHandler);
 
     }
 
@@ -58,6 +67,62 @@ public class ApplicationBase extends Application {
                         .setFatal(false)
                         .build()
         );
+    }
+
+    private class AnalyticsExceptionReporter extends ExceptionReporter {
+
+        public AnalyticsExceptionReporter(Tracker tracker, Thread.UncaughtExceptionHandler originalHandler, Context context) {
+            super(tracker, originalHandler, context);
+            setExceptionParser(new AnalyticsExceptionParser());
+        }
+
+        @Override
+        public void uncaughtException(Thread t, Throwable e) {
+            //Can handle thread in here. Show dialog and send email is sample example
+            super.uncaughtException(t, e);
+
+        }
+    }
+
+    private class AnalyticsExceptionParser implements ExceptionParser {
+
+        @Override
+        public String getDescription(String arg0, Throwable arg1) {
+            String exceptionDescription = getExceptionInfo(arg1, getPackageName(), true) + getCauseExceptionInfo(arg1.getCause());
+
+            //150 Bytes is the maximum allowed by Analytics for custom dimensions values. Assumed that 1 Byte = 1 Character (UTF-8)
+            if (exceptionDescription.length() > 150)
+                exceptionDescription = exceptionDescription.substring(0, 150);
+
+            return exceptionDescription;
+        }
+
+    }
+
+    private String getCauseExceptionInfo(Throwable t) {
+        String causeDescription = "";
+        while (t != null && causeDescription.isEmpty()) {
+            causeDescription = getExceptionInfo(t, getPackageName(), false);
+            t = t.getCause();
+        }
+        return causeDescription;
+    }
+
+    private String getExceptionInfo(Throwable t, String packageName, boolean includeExceptionName) {
+        String exceptionName = "";
+        String fileName = "";
+        String lineNumber = "";
+
+        for (StackTraceElement element : t.getStackTrace()) {
+            String className = element.getClassName().toString().toLowerCase();
+            if (packageName.isEmpty() || (!packageName.isEmpty() && className.contains(packageName))) {
+                exceptionName = includeExceptionName ? t.toString() : "";
+                fileName = element.getFileName();
+                lineNumber = String.valueOf(element.getLineNumber());
+                return exceptionName + "@" + fileName + ":" + lineNumber;
+            }
+        }
+        return "";
     }
 
 }
