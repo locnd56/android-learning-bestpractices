@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_color_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_widget_symbol"
+                style="@style/TextViewGigantic_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#008000"
+                android:text="VND"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_widget_tradingquantity"
+                style="@style/TextView_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_widget_symbol"
+                android:text="KLGD:100,10"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_indexdisplay"
+                style="@style/ImageView_Style"
+                android:layout_width="@dimen/imageview_size_large"
+                android:layout_height="@dimen/imageview_size_large"
+                android:layout_toLeftOf="@+id/tv_widget_indexaverage"
+                android:visibility="gone"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_widget_indexaverage"
+                style="@style/TextViewGigantic_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_widget_indexaverage"
+                android:textColor="#008000"
+                android:layout_centerInParent="true"
+                android:text="11.8" />
+
+            <TextView
+                android:id="@+id/tv_widget_indexratio"
+                style="@style/TextView_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tv_widget_indexaverage"
+                android:text="0.20" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_widget_maxlabel"
+                style="@style/TextView_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cao nhất" />
+
+            <TextView
+                android:id="@+id/tv_widget_max"
+                style="@style/TextViewGigantic_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_widget_maxlabel"
+                android:textColor="#008000"
+                android:text="11.8" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_widget_averagelabel"
+                style="@style/TextView_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TB" />
+
+            <TextView
+                android:id="@+id/tv_widget_average"
+                style="@style/TextViewGigantic_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_widget_averagelabel"
+                android:textColor="#008000"
+                android:text="11.7" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_widget_minlabel"
+                style="@style/TextView_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Thấp nhất" />
+
+            <TextView
+                android:id="@+id/tv_widget_min"
+                style="@style/TextViewGigantic_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_widget_minlabel"
+                android:textColor="#FF0000"
+                android:text="11.4" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_widget_buygainlabel"
+                style="@style/TextView_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dư mua" />
+
+            <TextView
+                android:id="@+id/tv_widget_buygain"
+                style="@style/TextViewLarge_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/tv_widget_buygainlabel"
+                android:text="300,00" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_widget_sellgainlabel"
+                style="@style/TextView_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Dư bán" />
+
+            <TextView
+                android:id="@+id/tv_widget_sellgain"
+                style="@style/TextViewLarge_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/tv_widget_sellgainlabel"
+                android:text="300,00" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

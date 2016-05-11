@@ -6,13 +6,15 @@
 
 
     <!-- Common -->
+    <dimen name="header_height">40dp</dimen>
+
     <!-- TextSize -->
-    <dimen name="text_size">13sp</dimen>
+    <dimen name="text_size">14sp</dimen>
     <dimen name="text_size_tiny">11sp</dimen>
     <dimen name="text_size_small">12sp</dimen>
-    <dimen name="text_size_large">14sp</dimen>
-    <dimen name="text_size_huge">15sp</dimen>
-    <dimen name="text_size_gigantic">16sp</dimen>
+    <dimen name="text_size_large">15sp</dimen>
+    <dimen name="text_size_huge">17sp</dimen>
+    <dimen name="text_size_gigantic">20sp</dimen>
 
     <!-- ImageSize -->
     <dimen name="imageview_size">20dp</dimen>
@@ -28,5 +30,7 @@
     <dimen name="alertdialog_content_height">80dp</dimen>
     <dimen name="dialog_width">250dp</dimen>
     <dimen name="text_size_dialog">14sp</dimen>
+
+    <dimen name="widget_margin">8dp</dimen>
 
 </resources>

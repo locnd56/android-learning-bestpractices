@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ExampleAnalytics</string>
+    <string name="app_name">ApplicationBase</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
     <string name="drawer_open">Open</string>
@@ -37,5 +37,11 @@
 
     <string name="Co">Có</string>
     <string name="Khong">Không</string>
+
+
+    <string name="Header1">Header1</string>
+    <string name="Header2">Header2</string>
+    <string name="Header3">Header3</string>
+    <string name="Header4">Header4</string>
 
 </resources>

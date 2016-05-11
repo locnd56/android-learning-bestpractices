@@ -38,13 +38,27 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="TextViewLarge_Style">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextViewGigantic_Style">
+        <item name="android:textSize">@dimen/text_size_gigantic</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="EditText_Style">
         <item name="android:textSize">@dimen/text_size</item>
         <item name="android:textColor">@color/text_color</item>
     </style>
 
     <style name="ImageButton_Style">
-
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="Button_Style">

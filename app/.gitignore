@@ -11,3 +11,5 @@
 *.iml
 *.properties
 *.pro
+src/com.locnd.test
+/src/com.locnd.test

@@ -11,6 +11,7 @@
 
     <!-- Common-->
     <color name="text_color">@color/primaryText</color>
+    <color name="text_color_white">#FFFFFF</color>
     <color name="text_color_secondary">@color/secondaryText</color>
     <color name="hint_text">@color/hintText</color>
     <color name="dividers_line">@color/dividers</color>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Header_Text">
+        <attr name="text_header" format="string" />
+    </declare-styleable>
+</resources>

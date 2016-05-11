@@ -1,4 +1,4 @@
-package com.example.exampleanalytics;
+package com.locnd.appbase;
 
 import org.junit.Test;
 

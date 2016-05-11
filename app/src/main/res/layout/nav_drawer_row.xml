@@ -3,22 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:clickable="true"
-    android:gravity="center"
     android:orientation="horizontal">
 
+    <View
+        android:id="@+id/viewSelected"
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:background="#FF0000"
+        android:visibility="gone" />
+
     <ImageView
-        style="@style/ImageView_Style"
         android:id="@+id/iv_navdrawer_image"
-        android:layout_width="24dp"
-        android:layout_height="wrap_content"
+        style="@style/ImageView_Style"
+        android:layout_width="@dimen/imageview_size_gigantic"
+        android:layout_height="@dimen/imageview_size_gigantic"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
         android:clickable="false"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/tv_navdrawer_title"
         style="@style/TextView_Style"
-        android:clickable="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp" />
+        android:layout_marginLeft="30dp"
+        android:clickable="false"
+        android:text="The handsome man of the world" />
 </LinearLayout>

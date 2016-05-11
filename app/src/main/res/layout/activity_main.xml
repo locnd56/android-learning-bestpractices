@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/slidemenu"
-        android:name="com.example.exampleanalytics.fragment.nav_slidemenu.SlideMenuFragment"
+        android:name="com.locnd.appbase.fragment.nav_slidemenu.SlideMenuFragment"
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start" />

@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.exampleanalytics">
+    package="com.locnd.appbase">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.locnd.appbase.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.locnd.appbase.permission.C2D_MESSAGE" />
 
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="false"
         android:xlargeScreens="true" />
+
     <application
         android:name=".ApplicationBase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/MyMaterialTheme">
+        <!--<activity android:name="com.locnd.test.TestActivity">-->
+        <!--android:label="@string/app_name">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
+
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
         <activity android:name=".Login">
             android:label="@string/app_name">
             <intent-filter>
@@ -24,15 +44,50 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
+        <service android:name="com.parse.PushService" />
+
+        <receiver
+            android:name=".fragment.notifications.CustomPushReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <!-- IMPORTANT: Change "info.androidhive.parsenotifications" to match your app's package name. -->
+                <category android:name="com.locnd.appbase" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.locnd.test.Mp3AppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.locnd.test.Mp3AppWidgetProvider.PREVIOUSACTION" />
+                <action android:name="com.locnd.test.Mp3AppWidgetProvider.PLAYACTION" />
+                <action android:name="com.locnd.test.Mp3AppWidgetProvider.PAUSEACTION" />
+                <action android:name="com.locnd.test.Mp3AppWidgetProvider.NEXTACTION" />
+                <action android:name="com.locnd.test.Mp3AppWidgetProvider.LOOPACTION" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget" />
+        </receiver>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="9fb19bafb0fa823b0bd2de007a21b30031d00ab0" />
     </application>
 
 </manifest>

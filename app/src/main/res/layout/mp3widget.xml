@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C8C8C8"
+    android:orientation="horizontal"
+    android:padding="@dimen/widget_margin">
+
+    <ImageView
+        android:id="@+id/iv_songimage"
+        style="@style/ImageView_Style"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_songname"
+            style="@style/TextView_Style"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Love hasnt its fault, that fault is in best friends" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0">
+
+            <!--<SeekBar-->
+                <!--android:id="@+id/sb_timer"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <TextView
+                android:id="@+id/tv_timer"
+                style="@style/TextView_Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="123123" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/ib_previous"
+                    style="@style/ImageButton_Style"
+                    android:layout_width="@dimen/imageview_size_large"
+                    android:layout_height="@dimen/imageview_size_large"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_launcher" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/ib_pause"
+                    style="@style/ImageButton_Style"
+                    android:layout_width="@dimen/imageview_size_large"
+                    android:layout_height="@dimen/imageview_size_large"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_media_pause"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/ib_play"
+                    style="@style/ImageButton_Style"
+                    android:layout_width="@dimen/imageview_size_large"
+                    android:layout_height="@dimen/imageview_size_large"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_media_play" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/ib_next"
+                    style="@style/ImageButton_Style"
+                    android:layout_width="@dimen/imageview_size_large"
+                    android:layout_height="@dimen/imageview_size_large"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_search" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/ib_loop"
+                    style="@style/ImageButton_Style"
+                    android:layout_width="@dimen/imageview_size_large"
+                    android:layout_height="@dimen/imageview_size_large"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_profile" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/ib_delete"
+                    style="@style/ImageButton_Style"
+                    android:layout_width="@dimen/imageview_size_large"
+                    android:layout_height="@dimen/imageview_size_large"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_close_dark" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
