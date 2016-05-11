@@ -22,14 +22,49 @@
                 android:id="@+id/toolbar"
                 layout="@layout/toolbar" />
 
-            <include
-                android:id="@+id/tablayout"
-                layout="@layout/tablayout" />
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <com.locnd.appbase.customview.actionbar.TabActionBarLayout
+                    android:id="@+id/tabHome"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:backgroundColor="#FF0000"
+                    app:image="@drawable/selector_tabactionbar_homeimage"></com.locnd.appbase.customview.actionbar.TabActionBarLayout>
+
+                <com.locnd.appbase.customview.actionbar.TabActionBarLayout
+                    android:id="@+id/tabFriends"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:backgroundColor="#00FF00"
+                    app:image="@drawable/selector_tabactionbar_friendsimage"></com.locnd.appbase.customview.actionbar.TabActionBarLayout>
+
+                <com.locnd.appbase.customview.actionbar.TabActionBarLayout
+                    android:id="@+id/tabMessages"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:backgroundColor="#0026ff"
+                    app:image="@drawable/selector_tabactionbar_messagesimage"></com.locnd.appbase.customview.actionbar.TabActionBarLayout>
+
+                <com.locnd.appbase.customview.actionbar.TabActionBarLayout
+                    android:id="@+id/tabLearning"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:backgroundColor="#00b6ff"
+                    app:image="@drawable/selector_tabactionbar_learningimage"></com.locnd.appbase.customview.actionbar.TabActionBarLayout>
+
+            </LinearLayout>
+
+            <com.locnd.appbase.customview.viewpager.ViewPagerCustom
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></com.locnd.appbase.customview.viewpager.ViewPagerCustom>
 
             <FrameLayout
                 android:id="@+id/fl_container"

@@ -2,29 +2,29 @@ package com.locnd.appbase;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.locnd.appbase.fragment.nav_slidemenu.SlideMenuItem;
 import com.locnd.appbase.abstracts.AbstractFragment;
-import com.locnd.appbase.adapter.ViewPagerAdapter;
-import com.locnd.appbase.fragment.friendsfragment.FriendsFragment;
+import com.locnd.appbase.customview.actionbar.TabActionBarLayout;
+import com.locnd.appbase.customview.viewpager.ViewPagerCustom;
+import com.locnd.appbase.customview.viewpager.ViewPagerFragmentAdapter;
 import com.locnd.appbase.fragment.homefragment.HomeFragment;
-import com.locnd.appbase.fragment.messagesfragment.MessagesFragment;
 import com.locnd.appbase.fragment.nav_slidemenu.SlideMenuFragment;
 import com.locnd.appbase.model.TabItem;
-import com.locnd.appbase.parser.XMLParser;
 import com.locnd.appbase.utils.CommonUtils;
 
 import java.lang.reflect.Constructor;
@@ -34,19 +34,22 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final int COUNT = 3;
+    final String DEBUG_TAG = this.getClass().getSimpleName();
 
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    TabLayout tabLayout;
-    ViewPager viewPager;
     private SlideMenuFragment slideMenu;
     FrameLayout fl_container;
     AbstractFragment currentFrag;
     private boolean doubleBackToExitPressedOnce = false;
     private final static int TIME_WAITING_EXIT = 2000;
     List<TabItem> tabItemList;
-    List<SlideMenuItem> slideMenuItemList;
-    String declareTabViewPager = "#" + "Home" + "#" + "Friends" + "#" + "Messages";
+    ViewPagerCustom viewPager;
+
+    TabActionBarLayout tabHome;
+    TabActionBarLayout tabFriends;
+    TabActionBarLayout tabMessages;
+    TabActionBarLayout tabLearning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,30 +67,11 @@ public class MainActivity extends AppCompatActivity {
         if (tabItemList == null) {
             tabItemList = new ArrayList<>();
         }
-        setUpViewPager(viewPager);
-        tabLayout.setupWithViewPager(viewPager);
-        setUpTabIcons();
-    }
-
-    private void setUpTabIcons() {
-        for (int i = 0; i < COUNT; i++) {
-            String iconPath = slideMenuItemList.get(i).getIcon();
-            if (iconPath != null && iconPath.length() > 0) {
-                int icon = getResources().getIdentifier(iconPath, "mipmap", this.getPackageName());
-                tabLayout.getTabAt(i).setIcon(icon);
-            }
-        }
+//        setUpViewPager(viewPager);
     }
 
     private void setUpViewPager(ViewPager viewPager) {
-        slideMenuItemList = new ArrayList<>();
-        slideMenuItemList = XMLParser.parseXML(getResources().getXml(R.xml.declare_slidemenu));
-        for (int i = 0; i < COUNT; i++) {
-            SlideMenuItem slideMenuItem = slideMenuItemList.get(i);
-            TabItem item = new TabItem(initFragment(slideMenuItem.getClassName()), slideMenuItem.getIcon());
-            tabItemList.add(item);
-        }
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), tabItemList);
+        ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
     }
 
@@ -98,6 +82,49 @@ public class MainActivity extends AppCompatActivity {
                 displayFragment(clazz);
             }
         });
+        tabHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetActived();
+                if (v != null) {
+                    v.setActivated(true);
+                }
+            }
+        });
+        tabMessages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetActived();
+                if (v != null) {
+                    v.setActivated(true);
+                }
+            }
+        });
+        tabFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetActived();
+                if (v != null) {
+                    v.setActivated(true);
+                }
+            }
+        });
+        tabLearning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetActived();
+                if (v != null) {
+                    v.setActivated(true);
+                }
+            }
+        });
+    }
+
+    private void resetActived() {
+        tabHome.setActivated(false);
+        tabFriends.setActivated(false);
+        tabLearning.setActivated(false);
+        tabMessages.setActivated(false);
     }
 
     private AbstractFragment initFragment(String className) {
@@ -130,25 +157,12 @@ public class MainActivity extends AppCompatActivity {
     private void displayFragment(String className) {
         AbstractFragment frag = initFragment(className);
         currentFrag = frag;
-        if (className.equals(HomeFragment.class.getName())) {
-            viewPager.setVisibility(View.VISIBLE);
-            viewPager.setCurrentItem(0);
-        } else if (className.equals(FriendsFragment.class.getName())) {
-            viewPager.setVisibility(View.VISIBLE);
-            viewPager.setCurrentItem(1);
-        } else if (className.equals(MessagesFragment.class.getName())) {
-            viewPager.setVisibility(View.VISIBLE);
-            viewPager.setCurrentItem(2);
-        } else {
-            viewPager.setVisibility(View.GONE);
-            getSupportActionBar().setTitle(frag.getTitle(this));
-            if (frag != null) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fl_container, frag);
-                fragmentTransaction.commit();
-
-            }
+        getSupportActionBar().setTitle(frag.getTitle(this));
+        if (frag != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fl_container, frag);
+            fragmentTransaction.commit();
         }
     }
 
@@ -157,15 +171,15 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
-
         slideMenu = (SlideMenuFragment) getSupportFragmentManager().findFragmentById(R.id.slidemenu);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         slideMenu.setUp(R.id.slidemenu, drawerLayout, toolbar);
+        viewPager = (ViewPagerCustom) findViewById(R.id.viewPager);
 
+        tabHome = (TabActionBarLayout) findViewById(R.id.tabHome);
+        tabFriends = (TabActionBarLayout) findViewById(R.id.tabFriends);
+        tabMessages = (TabActionBarLayout) findViewById(R.id.tabMessages);
+        tabLearning = (TabActionBarLayout) findViewById(R.id.tabLearning);
     }
 
     @Override
@@ -234,5 +248,32 @@ public class MainActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce = false;
             }
         }, TIME_WAITING_EXIT);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        int action = MotionEventCompat.getActionMasked(event);
+
+        switch (action) {
+            case (MotionEvent.ACTION_DOWN):
+                Log.d(DEBUG_TAG, "Action was DOWN");
+                return true;
+            case (MotionEvent.ACTION_MOVE):
+                Log.d(DEBUG_TAG, "Action was MOVE");
+                return true;
+            case (MotionEvent.ACTION_UP):
+                Log.d(DEBUG_TAG, "Action was UP");
+                return true;
+            case (MotionEvent.ACTION_CANCEL):
+                Log.d(DEBUG_TAG, "Action was CANCEL");
+                return true;
+            case (MotionEvent.ACTION_OUTSIDE):
+                Log.d(DEBUG_TAG, "Movement occurred outside bounds " +
+                        "of current screen element");
+                return true;
+            default:
+                return super.onTouchEvent(event);
+        }
     }
 }

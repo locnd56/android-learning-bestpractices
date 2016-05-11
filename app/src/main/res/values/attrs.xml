@@ -3,4 +3,8 @@
     <declare-styleable name="Header_Text">
         <attr name="text_header" format="string" />
     </declare-styleable>
+    <declare-styleable name="TabActionBarLayout">
+        <attr name="image" format="reference" />
+        <attr name="backgroundColor" format="string" />
+    </declare-styleable>
 </resources>
