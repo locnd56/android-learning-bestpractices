@@ -23,6 +23,12 @@ public class LearningFragment extends AbstractFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        showToast(getMainActivity(), "Learning created");
+    }
+
+    @Override
     public String getTitle(Context context) {
         return context.getString(R.string.title_learning);
     }

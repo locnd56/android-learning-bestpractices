@@ -22,6 +22,7 @@ import com.locnd.appbase.abstracts.AbstractFragment;
 import com.locnd.appbase.customview.actionbar.TabActionBarLayout;
 import com.locnd.appbase.customview.viewpager.ViewPagerCustom;
 import com.locnd.appbase.customview.viewpager.ViewPagerFragmentAdapter;
+import com.locnd.appbase.customview.viewpager.ViewPagerManager;
 import com.locnd.appbase.fragment.homefragment.HomeFragment;
 import com.locnd.appbase.fragment.nav_slidemenu.SlideMenuFragment;
 import com.locnd.appbase.model.TabItem;
@@ -33,7 +34,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public static final int COUNT = 3;
     final String DEBUG_TAG = this.getClass().getSimpleName();
 
     DrawerLayout drawerLayout;
@@ -46,10 +46,11 @@ public class MainActivity extends AppCompatActivity {
     List<TabItem> tabItemList;
     ViewPagerCustom viewPager;
 
-    TabActionBarLayout tabHome;
-    TabActionBarLayout tabFriends;
-    TabActionBarLayout tabMessages;
-    TabActionBarLayout tabLearning;
+    public TabActionBarLayout tabHome;
+    public TabActionBarLayout tabFriends;
+    public TabActionBarLayout tabMessages;
+    public TabActionBarLayout tabLearning;
+    ViewPagerManager screenManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +68,17 @@ public class MainActivity extends AppCompatActivity {
         if (tabItemList == null) {
             tabItemList = new ArrayList<>();
         }
-//        setUpViewPager(viewPager);
+
+        setUpViewPager(viewPager);
     }
 
     private void setUpViewPager(ViewPager viewPager) {
+        if (screenManager == null) {
+            screenManager = new ViewPagerManager(this);
+        }
         ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(getSupportFragmentManager());
+        viewPager.setOffscreenPageLimit(4);
+        viewPager.addOnPageChangeListener(screenManager);
         viewPager.setAdapter(adapter);
     }
 
@@ -85,37 +92,25 @@ public class MainActivity extends AppCompatActivity {
         tabHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetActived();
-                if (v != null) {
-                    v.setActivated(true);
-                }
+                setActiveTabActionbar(v);
             }
         });
         tabMessages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetActived();
-                if (v != null) {
-                    v.setActivated(true);
-                }
+                setActiveTabActionbar(v);
             }
         });
         tabFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetActived();
-                if (v != null) {
-                    v.setActivated(true);
-                }
+                setActiveTabActionbar(v);
             }
         });
         tabLearning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetActived();
-                if (v != null) {
-                    v.setActivated(true);
-                }
+                setActiveTabActionbar(v);
             }
         });
     }
@@ -190,6 +185,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (viewPager != null) {
+            viewPager.setCurrentItem(0);
+        }
         ApplicationBase.getInstance().trackScreen(this.getClass().getName());
     }
 
@@ -276,4 +274,12 @@ public class MainActivity extends AppCompatActivity {
                 return super.onTouchEvent(event);
         }
     }
+
+    public void setActiveTabActionbar(View v) {
+        resetActived();
+        if (v != null) {
+            v.setActivated(true);
+        }
+    }
+
 }

@@ -15,7 +15,10 @@ import java.util.List;
  * Created by Mr.Incredible on 5/11/2016.
  */
 public class ViewPagerFragmentAdapter extends FragmentPagerAdapter {
-    public static String[] listFragmentNames = {"HomeFragment", "FriendsFragment", "MessagesFragment", "LearningFragment"};
+    public static String[] listFragmentNames = {"com.locnd.appbase.fragment.homefragment.HomeFragment",
+            "com.locnd.appbase.fragment.friendsfragment.FriendsFragment",
+            "com.locnd.appbase.fragment.messagesfragment.MessagesFragment",
+            "com.locnd.appbase.fragment.learningfragment.LearningFragment"};
     TabActionBarItem tabHomeFragment = new TabActionBarItem(listFragmentNames[0], 0);
     TabActionBarItem tabFriendsFragment = new TabActionBarItem(listFragmentNames[1], 1);
     TabActionBarItem tabMessagesFragment = new TabActionBarItem(listFragmentNames[2], 2);
@@ -35,7 +38,18 @@ public class ViewPagerFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return initFragment(itemList.get(position).getClassName());
+        switch (position) {
+            case 0:
+                return initFragment(itemList.get(0).getClassName());
+            case 1:
+                return initFragment(itemList.get(1).getClassName());
+            case 2:
+                return initFragment(itemList.get(2).getClassName());
+            case 3:
+                return initFragment(itemList.get(3).getClassName());
+            default:
+                return null;
+        }
     }
 
     @Override
