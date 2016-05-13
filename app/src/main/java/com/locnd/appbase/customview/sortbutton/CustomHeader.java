@@ -46,9 +46,9 @@ public class CustomHeader extends LinearLayout {
 
     ImageView iv_sortheader_sort;
 
-    OnChangeGKL1Listener onChangeGKL1Listener;
-    OnChangeGKL2Listener onChangeGKL2Listener;
-    OnChangeGKL3Listener onChangeGKL3Listener;
+    OnChangeFirstTurnListener onChangeFirstTurnListener;
+    OnChangeSecondTurnListener onChangeSecondTurnListener;
+    OnChangeThirdTurnListener onChangeThirdTurnListener;
 
     public CustomHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -64,15 +64,15 @@ public class CustomHeader extends LinearLayout {
                 if (stateChange == STATE_BSGAIN.STATE_ONE.getValue()) {
                     stateChange = STATE_BSGAIN.STATE_TWO.getValue();
                     tv_text.setText(getTextChange2());
-                    onChangeGKL1Listener.onChangeGKL1();
+                    onChangeFirstTurnListener.onChangeFirst();
                 } else if (stateChange == STATE_BSGAIN.STATE_TWO.getValue()) {
                     stateChange = STATE_BSGAIN.STATE_THREE.getValue();
                     tv_text.setText(getTextChange3());
-                    onChangeGKL2Listener.onChangeGKL2();
+                    onChangeSecondTurnListener.onChangeSecond();
                 } else if (stateChange == STATE_BSGAIN.STATE_THREE.getValue()) {
                     stateChange = STATE_BSGAIN.STATE_ONE.getValue();
                     tv_text.setText(getTextChange1());
-                    onChangeGKL3Listener.onChangeGKL3();
+                    onChangeThirdTurnListener.onChangeThird();
                 }
             }
         });
@@ -97,28 +97,28 @@ public class CustomHeader extends LinearLayout {
 
     }
 
-    public interface OnChangeGKL1Listener {
-        public void onChangeGKL1();
+    public interface OnChangeFirstTurnListener {
+        public void onChangeFirst();
     }
 
-    public interface OnChangeGKL2Listener {
-        public void onChangeGKL2();
+    public interface OnChangeSecondTurnListener {
+        public void onChangeSecond();
     }
 
-    public interface OnChangeGKL3Listener {
-        public void onChangeGKL3();
+    public interface OnChangeThirdTurnListener {
+        public void onChangeThird();
     }
 
-    public void setOnChangeGKL1Listener(OnChangeGKL1Listener onChangeGKL1Listener) {
-        this.onChangeGKL1Listener = onChangeGKL1Listener;
+    public void setOnChangeFirstTurnListener(OnChangeFirstTurnListener onChangeFirstTurnListener) {
+        this.onChangeFirstTurnListener = onChangeFirstTurnListener;
     }
 
-    public void setOnChangeGKL2Listener(OnChangeGKL2Listener onChangeGKL2Listener) {
-        this.onChangeGKL2Listener = onChangeGKL2Listener;
+    public void setOnChangeSecondTurnListener(OnChangeSecondTurnListener onChangeSecondTurnListener) {
+        this.onChangeSecondTurnListener = onChangeSecondTurnListener;
     }
 
-    public void setOnChangeGKL3Listener(OnChangeGKL3Listener onChangeGKL3Listener) {
-        this.onChangeGKL3Listener = onChangeGKL3Listener;
+    public void setOnChangeThirdTurnListener(OnChangeThirdTurnListener onChangeThirdTurnListener) {
+        this.onChangeThirdTurnListener = onChangeThirdTurnListener;
     }
 
     public String getHeader() {

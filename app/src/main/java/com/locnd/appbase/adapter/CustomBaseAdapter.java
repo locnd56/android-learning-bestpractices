@@ -22,17 +22,36 @@ public class CustomBaseAdapter<T> extends ArrayAdapter {
         super(context, resource, objects);
         this.context = context;
         this.originList = (ArrayList<T>) objects;
-        this.cloneList = (ArrayList<T>) objects;
+        cloneArrayList();
     }
 
     public void sortArray(Comparator comparator) {
+        this.comparator = comparator;
+        notifyDataSetChanged();
+    }
 
+    public void cloneArrayList() {
+        if (cloneList == null) {
+            cloneList = new ArrayList<>();
+        } else {
+            cloneList.clear();
+        }
+        if (originList != null) {
+            cloneList.addAll(originList);
+        }
+    }
+
+    public void resetArray() {
+        this.comparator = null;
+        notifyDataSetChanged();
     }
 
     @Override
     public void notifyDataSetChanged() {
         if (comparator != null) {
             Collections.sort(cloneList, comparator);
+        } else {
+            cloneArrayList();
         }
         super.notifyDataSetChanged();
     }

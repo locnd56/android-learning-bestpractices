@@ -13,6 +13,7 @@ import com.locnd.appbase.abstracts.AbstractFragment;
 import com.locnd.appbase.customview.sortbutton.CustomHeader;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -51,75 +52,91 @@ public class HomeFragment extends AbstractFragment {
     }
 
     private void initListener() {
-        header1.setOnChangeGKL1Listener(new CustomHeader.OnChangeGKL1Listener() {
+        header1.setOnChangeFirstTurnListener(new CustomHeader.OnChangeFirstTurnListener() {
             @Override
-            public void onChangeGKL1() {
+            public void onChangeFirst() {
+                adapter.resetArray();
+                adapter.sortArray(new Comparator() {
+                    @Override
+                    public int compare(Object lhs, Object rhs) {
+                        return ((HomeItem) lhs).getItem1().compareTo(((HomeItem) rhs).getItem1());
+                    }
+                });
+            }
+        });
+
+        header1.setOnChangeSecondTurnListener(new CustomHeader.OnChangeSecondTurnListener() {
+            @Override
+            public void onChangeSecond() {
+                adapter.sortArray(new Comparator() {
+                    @Override
+                    public int compare(Object lhs, Object rhs) {
+                        return ((HomeItem) rhs).getItem1().compareTo(((HomeItem) lhs).getItem1());
+                    }
+                });
+            }
+        });
+
+        header1.setOnChangeThirdTurnListener(new CustomHeader.OnChangeThirdTurnListener() {
+            @Override
+            public void onChangeThird() {
+                adapter.resetArray();
+            }
+        });
+
+        header2.setOnChangeFirstTurnListener(new CustomHeader.OnChangeFirstTurnListener() {
+            @Override
+            public void onChangeFirst() {
 
             }
         });
-        header2.setOnChangeGKL1Listener(new CustomHeader.OnChangeGKL1Listener() {
+        header3.setOnChangeFirstTurnListener(new CustomHeader.OnChangeFirstTurnListener() {
             @Override
-            public void onChangeGKL1() {
+            public void onChangeFirst() {
 
             }
         });
-        header3.setOnChangeGKL1Listener(new CustomHeader.OnChangeGKL1Listener() {
+        header4.setOnChangeFirstTurnListener(new CustomHeader.OnChangeFirstTurnListener() {
             @Override
-            public void onChangeGKL1() {
+            public void onChangeFirst() {
 
             }
         });
-        header4.setOnChangeGKL1Listener(new CustomHeader.OnChangeGKL1Listener() {
+
+        header2.setOnChangeSecondTurnListener(new CustomHeader.OnChangeSecondTurnListener() {
             @Override
-            public void onChangeGKL1() {
+            public void onChangeSecond() {
 
             }
         });
-        header1.setOnChangeGKL2Listener(new CustomHeader.OnChangeGKL2Listener() {
+        header3.setOnChangeSecondTurnListener(new CustomHeader.OnChangeSecondTurnListener() {
             @Override
-            public void onChangeGKL2() {
+            public void onChangeSecond() {
 
             }
         });
-        header2.setOnChangeGKL2Listener(new CustomHeader.OnChangeGKL2Listener() {
+        header4.setOnChangeSecondTurnListener(new CustomHeader.OnChangeSecondTurnListener() {
             @Override
-            public void onChangeGKL2() {
+            public void onChangeSecond() {
 
             }
         });
-        header3.setOnChangeGKL2Listener(new CustomHeader.OnChangeGKL2Listener() {
+
+        header2.setOnChangeThirdTurnListener(new CustomHeader.OnChangeThirdTurnListener() {
             @Override
-            public void onChangeGKL2() {
+            public void onChangeThird() {
 
             }
         });
-        header4.setOnChangeGKL2Listener(new CustomHeader.OnChangeGKL2Listener() {
+        header3.setOnChangeThirdTurnListener(new CustomHeader.OnChangeThirdTurnListener() {
             @Override
-            public void onChangeGKL2() {
+            public void onChangeThird() {
 
             }
         });
-        header1.setOnChangeGKL3Listener(new CustomHeader.OnChangeGKL3Listener() {
+        header4.setOnChangeThirdTurnListener(new CustomHeader.OnChangeThirdTurnListener() {
             @Override
-            public void onChangeGKL3() {
-
-            }
-        });
-        header2.setOnChangeGKL3Listener(new CustomHeader.OnChangeGKL3Listener() {
-            @Override
-            public void onChangeGKL3() {
-
-            }
-        });
-        header3.setOnChangeGKL3Listener(new CustomHeader.OnChangeGKL3Listener() {
-            @Override
-            public void onChangeGKL3() {
-
-            }
-        });
-        header4.setOnChangeGKL3Listener(new CustomHeader.OnChangeGKL3Listener() {
-            @Override
-            public void onChangeGKL3() {
+            public void onChangeThird() {
 
             }
         });
