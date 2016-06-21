@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.locnd.appbase.MainActivity;
+import com.locnd.appbase.activity.MainActivity;
 import com.locnd.appbase.customview.alertdialog.AlertDialog;
 
 /**
@@ -22,6 +23,7 @@ public class AbstractFragment extends Fragment {
         if (alertDialog == null) {
             alertDialog = new AlertDialog(getContext());
         }
+        getMainActivity();
     }
 
     public MainActivity getMainActivity() {
@@ -61,26 +63,31 @@ public class AbstractFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        Log.e("Fragment", "onStart");
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        Log.e("Fragment", "onStop");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.e("Fragment", "Destroy View");
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        Log.e("Fragment", "onPause");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Log.e("Fragment", "onDestroy");
     }
 
     @Override

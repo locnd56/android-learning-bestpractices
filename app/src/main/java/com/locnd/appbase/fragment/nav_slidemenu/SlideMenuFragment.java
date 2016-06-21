@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.locnd.appbase.R;
 import com.locnd.appbase.parser.XMLParser;
@@ -32,6 +33,7 @@ public class SlideMenuFragment extends Fragment {
     private FragmentDrawerListener drawerListener;
     private View containerView;
     private ActionBarDrawerToggle mDrawerToggle;
+    TextView tv_fullname;
 
 
     @Override
@@ -51,6 +53,7 @@ public class SlideMenuFragment extends Fragment {
 
     private void initView(View view) {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        tv_fullname = (TextView) view.findViewById(R.id.tv_slidemenu_fullname);
     }
 
     private void initData() {
@@ -118,7 +121,8 @@ public class SlideMenuFragment extends Fragment {
         }
     }
 
-    public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
+    public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar, String fullname) {
+        tv_fullname.setText(fullname);
         containerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.locnd.appbase.MainActivity;
+import com.locnd.appbase.activity.MainActivity;
 import com.locnd.appbase.utils.AppConfig;
 import com.locnd.appbase.utils.NotificationUtils;
 import com.parse.ParsePushBroadcastReceiver;

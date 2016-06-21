@@ -1,7 +1,10 @@
-package com.locnd.appbase;
+package com.locnd.appbase.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PersistableBundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MotionEventCompat;
@@ -18,6 +21,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.locnd.appbase.ApplicationBase;
+import com.locnd.appbase.R;
 import com.locnd.appbase.abstracts.AbstractFragment;
 import com.locnd.appbase.customview.actionbar.TabActionBarLayout;
 import com.locnd.appbase.customview.viewpager.ViewPagerCustom;
@@ -27,6 +32,7 @@ import com.locnd.appbase.fragment.homefragment.HomeFragment;
 import com.locnd.appbase.fragment.nav_slidemenu.SlideMenuFragment;
 import com.locnd.appbase.model.TabItem;
 import com.locnd.appbase.utils.CommonUtils;
+import com.locnd.appbase.utils.PrefManager;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -51,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
     public TabActionBarLayout tabMessages;
     public TabActionBarLayout tabLearning;
     ViewPagerManager screenManager;
+    PrefManager prefManager;
+    String email;
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        email = (String) savedInstanceState.get(Login.EMAIL_TAG);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
         if (tabItemList == null) {
             tabItemList = new ArrayList<>();
         }
-
+        if (prefManager == null) {
+            prefManager = new PrefManager(this);
+        }
         setUpViewPager(viewPager);
     }
 
@@ -168,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         slideMenu = (SlideMenuFragment) getSupportFragmentManager().findFragmentById(R.id.slidemenu);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        slideMenu.setUp(R.id.slidemenu, drawerLayout, toolbar);
+        slideMenu.setUp(R.id.slidemenu, drawerLayout, toolbar, email);
         viewPager = (ViewPagerCustom) findViewById(R.id.viewPager);
 
         tabHome = (TabActionBarLayout) findViewById(R.id.tabHome);
@@ -187,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (viewPager != null) {
             viewPager.setCurrentItem(0);
+            setActiveTabActionbar(tabHome);
         }
         ApplicationBase.getInstance().trackScreen(this.getClass().getName());
     }
@@ -202,8 +219,17 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_logout) {
+            prefManager.logout();
+            backToLogin();
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void backToLogin() {
+        Intent intent = new Intent(MainActivity.this, Login.class);
+        startActivity(intent);
     }
 
     private void setViewAtSearchOpen(ActionBar action) {
@@ -282,4 +308,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("Activity", "onPause");
+        Snackbar.make(findViewById(R.id.ll_activitymain), "Activity - onPause", Snackbar.LENGTH_SHORT);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("Activity", "onStart");
+        Snackbar.make(findViewById(R.id.ll_activitymain), "Activity - onStart", Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("Activity", "onStop");
+        Snackbar.make(findViewById(R.id.ll_activitymain), "Activity - onStop", Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("Activity", "onDestroy");
+        Snackbar.make(findViewById(R.id.ll_activitymain), "Activity - onDestroy", Snackbar.LENGTH_SHORT).show();
+    }
 }

@@ -2,7 +2,7 @@ package com.locnd.appbase.customview.viewpager;
 
 import android.support.v4.view.ViewPager;
 
-import com.locnd.appbase.MainActivity;
+import com.locnd.appbase.activity.MainActivity;
 
 /**
  * Created by Mr.Incredible on 5/11/2016.

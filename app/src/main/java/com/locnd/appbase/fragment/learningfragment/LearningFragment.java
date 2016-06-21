@@ -18,7 +18,7 @@ public class LearningFragment extends AbstractFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.learning_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_learning, container, false);
         return view;
     }
 

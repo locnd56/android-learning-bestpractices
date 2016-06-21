@@ -1,4 +1,4 @@
-package com.locnd.appbase;
+package com.locnd.appbase.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.locnd.appbase.ApplicationBase;
+import com.locnd.appbase.R;
 import com.locnd.appbase.customview.login.EditText_InputEmail;
 import com.locnd.appbase.customview.login.EditText_InputName;
 import com.locnd.appbase.customview.login.EditText_InputPassword;
@@ -22,6 +24,7 @@ import com.locnd.appbase.utils.ParseUtils;
  * Created by Mr.Incredible on 2/22/2016.
  */
 public class Login extends AppCompatActivity {
+    public static final String EMAIL_TAG = "email";
     static final int TIME_DELAYED = 2000;
     static final String USERNAME = "123";
     static final String PASSWORD = "12345";
@@ -32,8 +35,13 @@ public class Login extends AppCompatActivity {
     EditText_InputPassword edt_inputPassword;
     Button btn_login;
     boolean doubleClickToExit = false;
-
     private PrefManager pref;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString(EMAIL_TAG, edt_inputEmail.getEdt_inputemail().getText().toString());
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +51,6 @@ public class Login extends AppCompatActivity {
         if (pref.isLoggedIn()) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-            finish();
         }
         setContentView(R.layout.login);
         initView();
