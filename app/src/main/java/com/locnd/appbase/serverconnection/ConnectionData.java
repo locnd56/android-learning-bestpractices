@@ -53,7 +53,8 @@ public class ConnectionData {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-//                ResponseObject responseObject = new ResponseObject(statusCode, obj.getKeyIdentifier(), responseString);
+                ResponseObject responseObject = new ResponseObject(statusCode, obj.getKeyIdentifier(), responseString);
+                result.response(responseObject);
             }
         });
     }

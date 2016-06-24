@@ -28,15 +28,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/MyMaterialTheme">
-        <!--<activity android:name="com.locnd.test.TestActivity">-->
-        <!--android:label="@string/app_name">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
-
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <activity android:name=".activity.Login">
+        <activity android:name="com.locnd.test.TestActivity">
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +36,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name="com.locnd.test.Test1Activity"></activity>
+        <!--<activity android:name=".activity.Login">-->
+        <!--android:label="@string/app_name">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
+
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".activity.MainActivity" />-->
 
         <service android:name="com.parse.PushService" />
 
@@ -71,18 +72,10 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.locnd.test.Mp3AppWidgetProvider">
+        <receiver android:name="com.locnd.test.CancelBroadCastReceiver">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.locnd.test.Mp3AppWidgetProvider.PREVIOUSACTION" />
-                <action android:name="com.locnd.test.Mp3AppWidgetProvider.PLAYACTION" />
-                <action android:name="com.locnd.test.Mp3AppWidgetProvider.PAUSEACTION" />
-                <action android:name="com.locnd.test.Mp3AppWidgetProvider.NEXTACTION" />
-                <action android:name="com.locnd.test.Mp3AppWidgetProvider.LOOPACTION" />
+                <action android:name="com.locnd.LOCNGUYEN" />
             </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget" />
         </receiver>
 
         <meta-data
