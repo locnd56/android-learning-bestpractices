@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.4.0_cf9b4c25c8cfd76430ba1419391a01cb5b24cdcb.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\libs\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\gson-2.2.4_b2050b731e2af245c52a894bda0357a740b1b9d8.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_49f14cbfc0093259c086fee30136fed77d35a023.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d4ab8678882571a0a6f19c47a826ecbce5b4f42b">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.jakewharton-butterknife-8.1.0_d5b34059f830e98f972785e8c54b2c21912a35b2.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\libs\signalr-client-sdk.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0e52fbd5c08e807d23aa3bb9d09e208ffd8ac609">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\signalr-client-sdk_99cf867b555003fb133db72fa41d80c7d6cec8c9.jar" />
+    </item>
+    <item
+        jar="E:\SetUp\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\support-annotations-23.3.0_c5495dee4865c541505fec6309a36eaad61887a8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Loc Nguyen\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.3.6\526a9f794eab830eae4f23a62c572878b3f491ab\httpclient-4.3.6.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\httpclient-4.3.6_e30e16a584c7aff753a9ef104872037c15e447b6.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-measurement-8.4.0_05e82afbd2a327ab34f1e40b5a29e886793c3e61.jar" />
+    </item>
+    <item
+        jar="C:\Users\Loc Nguyen\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.1.0\d6854f42bfb4098d3d2358d93201307b9f1cc95d\butterknife-annotations-8.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d6854f42bfb4098d3d2358d93201307b9f1cc95d">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.1.0_27ea08d8576ad6a11e3eade066a980050f494328.jar" />
+    </item>
+    <item
+        jar="C:\Users\Loc Nguyen\.gradle\caches\modules-2\files-2.1\com.parse\parse-android\1.13.0\58a7d54b6a4f28be11f0cecec93097eddf473e6f\parse-android-1.13.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="58a7d54b6a4f28be11f0cecec93097eddf473e6f">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\parse-android-1.13.0_819aee7b742d3199d1f764997126ef3b4d44f781.jar" />
+    </item>
+    <item
+        jar="C:\Users\Loc Nguyen\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.9\386a4339ffe52d5d63e80f9bed8d2b1d1a418249\android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.9_0b223ec7b2d7e1db756360dadf242d4cd34a5ec7.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-8.4.0_40bf2f8bc1bb8e53c18b7e21b077ca048c05307c.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.android.databinding\adapters\1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3cae403175958af8baa00bed0bd6e04187d69415">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.android.databinding-adapters-1.1_24cebc05c625c509e5d7626fc61d9872b3a3a80d.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_78863065c8cdc5b699bee9f280daac14e9cdc89b.jar" />
+    </item>
+    <item
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\android\databinding\baseLibrary\2.1.0\baseLibrary-2.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a7aeef173c4e5b104ec04f146f8e8f9debde1c5e">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\baseLibrary-2.1.0_ec03e761e0ade2c2d22180a89ff1c93b8489100a.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-analytics-8.4.0_1cde5a21d0f2a8230fb82911b49bc80aae101f7f.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-gcm-8.4.0_e5c746db3a47394468294e016860c57dea1fe1bc.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.android.databinding\library\1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d985cdf99de8a63824b52d8a8efc309f9e5fbf01">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.android.databinding-library-1.1_14aeaa46dd068b1133858e0d72536571f50a72e8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Loc Nguyen\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_6ef4693149ee1e0d8dae76f754fe27db9b50e129.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_79823ff5ccd11387103c137617f1b838f6272548.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_67dcae796ebae5655b8775cf358a3a3d5f4cc827.jar" />
+    </item>
+    <item
+        jar="E:\Project\learninganalytics\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="E:\Project\learninganalytics\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_8964abb7d52ca5ef90a6e0f56cec646547cdf2c1.jar" />
+    </item>
+
+</items>
